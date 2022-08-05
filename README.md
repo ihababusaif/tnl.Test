@@ -4,6 +4,9 @@
 # tnl.Test
 
 <!-- badges: start -->
+
+[![Codecov test
+coverage](https://codecov.io/gh/ihababusaif/tnl.Test/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ihababusaif/tnl.Test?branch=master)
 <!-- badges: end -->
 
 The goal of tnl.Test is to provide functions to perform the hypothesis
@@ -88,7 +91,7 @@ library(tnl.Test)
 #> [1] "Monte Carlo simulation"
 #> 
 #> $cdf
-#> [1] 0.00688
+#> [1] 0.00691
 ```
 
 `dtnl` gives the density of
@@ -125,7 +128,7 @@ library(tnl.Test)
 ``` r
 library(tnl.Test)
  rtnl(N=15,n=7,m=10,l=2)
-#>  [1] 7 7 7 7 7 7 7 7 7 5 6 7 7 6 7
+#>  [1] 4 7 7 6 7 7 5 6 5 6 7 7 6 7 7
 ```
 
 `tnl_mean` gives an expression for
@@ -176,7 +179,7 @@ under Lehmann alternatives.
 ``` r
 library(tnl.Test)
 rtnl.lehmann(N = 15, n. = 7,m.=10, l = 2,gamma=0.5)
-#>  [1] 3 7 7 6 6 6 7 4 6 7 6 6 2 4 7
+#>  [1] 7 3 6 5 2 7 5 2 6 4 6 2 7 7 7
 ```
 
 ## Corresponding Author
