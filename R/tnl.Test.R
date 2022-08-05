@@ -46,17 +46,9 @@ tnl <- function(n.,m., l) {
 }
 
 stest <- function(a., b., l) {
-  if (any(is.na(a.))|any(is.na(b.))) {
-    warning(
-      "Since the data should not contain missing values,
-we exclude the missing values from the data"
-    )
-  }
-
-  if (any(c(length(a.),length(b.)) < (2 * l + 1))) {
+    if (any(c(length(a.),length(b.)) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
   }
-
   if(length(a.)<= length(b.)) {a <- sort(a.);b <- sort(b.);n=length(a);m=length(b)}
   if(length(a.)>  length(b.)) {b <- sort(a.);a <- sort(b.);n=length(a);m=length(b)}
 

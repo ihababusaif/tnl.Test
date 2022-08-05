@@ -29,7 +29,7 @@ You can install the released version of tnl.Test from [CRAN](https://CRAN.R-proj
 ``` r
 install.packages("tnl.Test")
 ```
-Or
+Alternatively, you can install the development version on GitHub using the devtools package:
 ``` r
 install.packages("devtools") # if you have not installed "devtools" package
 devtools::install_github("ihababusaif/tnl.Test")

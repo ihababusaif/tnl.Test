@@ -12,10 +12,12 @@ test_that("functions returns a list", {
   expect_type(ptnl(2, 5,7, 1, exact = "FALSE"), "list")
   expect_type(ptnl(2, 11,8, 1), "list")
   expect_type(dtnl(2, 5,6, 1), "list")
+  expect_type(dtnl(2, 5,5, 1), "list")
   expect_type(dtnl(c(2, -1, 6), 5,5, 1, exact = "TRUE"), "list")
   expect_type(dtnl(2, 5,7, 1, exact = "FALSE"), "list")
   expect_type(dtnl(2, 11,5, 1), "list")
   expect_type(qtnl(.2, 5,7, 1), "list")
+  expect_type(qtnl(.2, 5,5, 1), "list")
   expect_type(qtnl(.2, 5,7, 1, exact = "TRUE"), "list")
   expect_type(qtnl(.2, 5,7, 1, exact = "FALSE"), "list")
   expect_type(qtnl(.2, 11,9, 1), "list")
@@ -26,10 +28,13 @@ test_that("functions returns a list", {
   Y <- c(y, 1.007, -2.023, 1.468, 1.396)
   expect_type(tnl.test(X, Y, l = 2), "list")
   expect_type(tnl_mean(10,7, 2), "double")
+  expect_type(tnl_mean(7,7, 2), "double")
 
   expect_type(ptnl.lehmann(2, 6,6, 2, 0.5), "double")
   expect_type(dtnl.lehmann(2, 6,8, 2, 1.2), "double")
   expect_type(qtnl.lehmann(.351, 6,7, 2, 0.5), "integer")
+  expect_type(dtnl.lehmann(2, 6,6, 2, 1.2), "double")
+  expect_type(qtnl.lehmann(.351, 6,6, 2, 0.5), "integer")
 })
 ## Test whether the output return the right number
 test_that("functions returns the right output", {
@@ -62,6 +67,7 @@ test_that("functions returns a  vector with the expected size", {
   expect_vector(dtnl.lehmann(c(2, -1, 8), 6,9, 2, 0.8), ptype = double(), size = 3)
   expect_vector(ptnl.lehmann(c(2, -1, 6), 5,9, 2, 1.2), ptype = double(), size = 3)
   expect_vector(rtnl.lehmann(10, 7,7, 2, 1), ptype = double(), size = 10)
+  expect_vector(rtnl.lehmann(10, 7,9, 2, 1), ptype = double(), size = 10)
 })
 # ## Test whether the output should not exceed one.
 test_that("functions returns number should not exceed one", {
@@ -100,15 +106,12 @@ test_that("functions returns errors", {
   expect_error(qtnl(1.3, 8,15, 1), "p must be between 0 and 1")
   expect_error(dtnl.lehmann(2, 3,9, 5, 1.2), "n,m must be > 2l")
   expect_error(ptnl.lehmann(2, 3,9, 5, 1.2), "n,m must be > 2l")
-
   expect_warning(
     tnl.test(c(x, NA), c(NA, y), l = 2),
     "Since the data should not contain missing values,
 we exclude the missing values from the data"
   )
-  expect_warning(
-    tnl_mean(5,14, 3), "n,m must be > 2l"
-  )
+  expect_warning(tnl_mean(5,14, 3), "n,m must be > 2l")
   expect_error(rtnl(20, 5,10, 3), "n,m must be > 2l")
   expect_error(rtnl.lehmann(20, 5,18, 3, 1), "n,m must be > 2l")
   expect_error(qtnl.lehmann(3, 5,9,2, 1.2), "p must be between 0 and 1")

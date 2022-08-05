@@ -1,5 +1,5 @@
-Package: tnl.Test
 Type: Package
+Package: tnl.Test
 Title: Non-Parametric Tests for the Two-Sample Problem
 Version: 0.1.0
 Authors@R: c(

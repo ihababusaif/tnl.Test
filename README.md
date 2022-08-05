@@ -22,7 +22,8 @@ You can install the released version of tnl.Test from
 install.packages("tnl.Test")
 ```
 
-Or
+Alternatively, you can install the development version on GitHub using
+the devtools package:
 
 ``` r
 install.packages("devtools") # if you have not installed "devtools" package
@@ -128,7 +129,7 @@ library(tnl.Test)
 ``` r
 library(tnl.Test)
  rtnl(N=15,n=7,m=10,l=2)
-#>  [1] 4 7 7 6 7 7 5 6 5 6 7 7 6 7 7
+#>  [1] 7 7 7 6 7 7 7 7 7 7 7 5 5 4 7
 ```
 
 `tnl_mean` gives an expression for
@@ -179,7 +180,7 @@ under Lehmann alternatives.
 ``` r
 library(tnl.Test)
 rtnl.lehmann(N = 15, n. = 7,m.=10, l = 2,gamma=0.5)
-#>  [1] 7 3 6 5 2 7 5 2 6 4 6 2 7 7 7
+#>  [1] 6 6 6 6 7 7 7 4 7 2 7 7 7 6 7
 ```
 
 ## Corresponding Author
