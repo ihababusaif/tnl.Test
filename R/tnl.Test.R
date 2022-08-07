@@ -1,10 +1,24 @@
-tnl <- function(n.,m., l) {
-  if (any(c(n.,m.) < (2 * l + 1))) {
+tnl <- function(n., m., l) {
+  if (any(c(n., m.) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
   }
-  if(n.==m.){m<-m.;n<-n.} else { m<-max(n.,m.);n<-min(n.,m.)}
-  j1=NULL ;  j1[1]=0;  for (i in 2:n)  {j1[i]=floor(m/n*(i-1))}
-  j2=NULL ;  for (i in 1:(n-1)) {j2[i]=ceiling(m/n*(i+1))} ;  j2[n]=(m+1)
+  if (n. == m.) {
+    m <- m.
+    n <- n.
+  } else {
+    m <- max(n., m.)
+    n <- min(n., m.)
+  }
+  j1 <- NULL
+  j1[1] <- 0
+  for (i in 2:n) {
+    j1[i] <- floor(m / n * (i - 1))
+  }
+  j2 <- NULL
+  for (i in 1:(n - 1)) {
+    j2[i] <- ceiling(m / n * (i + 1))
+  }
+  j2[n] <- (m + 1)
 
   x <- NULL
   for (j in 0:n) {
@@ -20,23 +34,23 @@ tnl <- function(n.,m., l) {
       zz2 <- NULL
       M <- x[kk, ]
       for (i in 1:l) {
-        if (sum(M[1:(j2[i+(l-1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(M[1:(j2[i + (l - 1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(M[1:(j1[i-(l-1)])]) < i & sum(M[1:(j2[i+(l-1)])]) >= i) {
+        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i) {
           zz2[i] <- 1
         } else {
           zz2[i] <- 0
         }
       }
       for (i in (n - l + 1):n) {
-        if (sum(M[1:(j1[i-(l-1)])]) < i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(M[1:(j1[i - (l - 1)])]) < i) zz2[i] <- 1 else zz2[i] <- 0
       }
       if (sum(zz2) == v) count <- count + 1
     }
     prob[ss] <- count
   }
-  prob <- prob / choose((m+n), n)
+  prob <- prob / choose((m + n), n)
   res <- NULL
   for (t in 1:n) {
     res[t] <- sum(prob[1:t])
@@ -46,29 +60,47 @@ tnl <- function(n.,m., l) {
 }
 
 stest <- function(a., b., l) {
-    if (any(c(length(a.),length(b.)) < (2 * l + 1))) {
+  if (any(c(length(a.), length(b.)) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
   }
-  if(length(a.)<= length(b.)) {a <- sort(a.);b <- sort(b.);n=length(a);m=length(b)}
-  if(length(a.)>  length(b.)) {b <- sort(a.);a <- sort(b.);n=length(a);m=length(b)}
+  if (length(a.) <= length(b.)) {
+    a <- sort(a.)
+    b <- sort(b.)
+    n <- length(a)
+    m <- length(b)
+  }
+  if (length(a.) > length(b.)) {
+    b <- sort(a.)
+    a <- sort(b.)
+    n <- length(a)
+    m <- length(b)
+  }
 
-  j1=NULL ;  j1[1]=0;  for (i in 2:n)  {j1[i]=floor(m/n*(i-1))}
-  j2=NULL ;  for (i in 1:(n-1)) {j2[i]=ceiling(m/n*(i+1))} ;  j2[n]=(m+1)
+  j1 <- NULL
+  j1[1] <- 0
+  for (i in 2:n) {
+    j1[i] <- floor(m / n * (i - 1))
+  }
+  j2 <- NULL
+  for (i in 1:(n - 1)) {
+    j2[i] <- ceiling(m / n * (i + 1))
+  }
+  j2[n] <- (m + 1)
 
   t <- 0
   for (i in 1:l) {
-    if (a[i] < b[j2[i+(l-1)]]) t <- t + 1
+    if (a[i] < b[j2[i + (l - 1)]]) t <- t + 1
   }
-  for (i in (l+1):(n - l)) {
-    if (a[i] >= b[j1[i-(l-1)]] &a[i] < b[j2[i+(l-1)]]) t <- t + 1
+  for (i in (l + 1):(n - l)) {
+    if (a[i] >= b[j1[i - (l - 1)]] & a[i] < b[j2[i + (l - 1)]]) t <- t + 1
   }
   for (i in (n - l + 1):n) {
-    if (a[i] >= b[j1[i-(l-1)]]) t <- t + 1
+    if (a[i] >= b[j1[i - (l - 1)]]) t <- t + 1
   }
   return(t)
 }
 
-tnl.sim <- function(n.,m., l, trial = 100000) {
+tnl.sim <- function(n., m., l, trial = 100000) {
   x <- y <- NULL
   statistic <- NULL
   for (i in 1:trial) {
@@ -86,10 +118,10 @@ tnl.sim <- function(n.,m., l, trial = 100000) {
   return(result)
 }
 
-a.ki <- function(n,m, k, i) {
+a.ki <- function(n, m, k, i) {
   (choose((i + k - 1), (i - 1)) *
-     choose(((m+n)- i - k), (n - i))) /
-    choose((m+n), n)
+    choose(((m + n) - i - k), (n - i))) /
+    choose((m + n), n)
 }
 
 
@@ -158,19 +190,17 @@ a.ki <- function(n,m, k, i) {
 #'             *Two-Sample Problem based on Order Statistics*.
 #'             Submitted paper.
 #' @examples
-#' \dontrun{
-#' require(stats)
-#' x <- rnorm(7, 2, 0.5)
-#' y <- rnorm(5, 0, 1)
-#' tnl.test(x, y, l = 2)
-#'   $statistic
-#'   [1] 2
-#'
-#'   $p.value
-#'   [1]  0.01515152
-#'   }
+#' #require(stats)
+#' #x <- rnorm(7, 2, 0.5)
+#' #y <- rnorm(5, 0, 1)
+#' #tnl.test(x, y, l = 2)
+#' ## $statistic
+#' ## [1] 2
+#' ##
+#' ## $p.value
+#' ## [1]  0.01515152
 tnl.test <- function(x, y, l, exact = "NULL") {
-  if (any(is.na(x))|any(is.na(y))) {
+  if (any(is.na(x)) | any(is.na(y))) {
     warning(
       "Since the data should not contain missing values,
 we exclude the missing values from the data"
@@ -178,20 +208,21 @@ we exclude the missing values from the data"
   }
   x <- x[!is.na(x)]
   y <- y[!is.na(y)]
-  n=length(x);m=length(y)
+  n <- length(x)
+  m <- length(y)
   stat <- stest(x, y, l)
 
   if (exact == "TRUE") {
-    p.value <- tnl(n,m, l)$cdf[stat]
+    p.value <- tnl(n, m, l)$cdf[stat]
   }
   if (exact == "FALSE") {
-    p.value <- tnl.sim(n,m, l)$cdf[stat]
+    p.value <- tnl.sim(n, m, l)$cdf[stat]
   }
-  if (exact == "NULL" & n <= 10&m<=10) {
-    p.value <- tnl(n,m, l)$cdf[stat]
+  if (exact == "NULL" & n <= 10 & m <= 10) {
+    p.value <- tnl(n, m, l)$cdf[stat]
   }
-  if (exact == "NULL" & n > 10|m>10) {
-    p.value <- tnl.sim(n,m, l)$cdf[stat]
+  if (exact == "NULL" & n > 10 | m > 10) {
+    p.value <- tnl.sim(n, m, l)$cdf[stat]
   }
   result <- list(statistic = stat, p.value = p.value)
   return(result)
@@ -224,29 +255,27 @@ we exclude the missing values from the data"
 #'    }
 #'
 #' @examples
-#' \dontrun{
-#' ptnl(q = c(2,5), n = 6,m=5, l = 2, trial = 100000)
-#'   $method
-#'   [1] "exact"
-#'
-#'   $cdf
-#'   [1] 0.02164502 1.00000000
-#'   }
-ptnl <- function(q, n,m, l, exact = "NULL", trial = 100000) {
-   if (exact == "TRUE") {
-    ptnl <- tnl(n,m, l)$cdf
+#' #ptnl(q = c(2, 5), n = 6, m = 5, l = 2, trial = 100000)
+#' ## $method
+#' ## [1] "exact"
+#' ##
+#' ## $cdf
+#' ## [1] 0.02164502 1.00000000
+ptnl <- function(q, n, m, l, exact = "NULL", trial = 100000) {
+  if (exact == "TRUE") {
+    ptnl <- tnl(n, m, l)$cdf
     method <- "exact"
   }
   if (exact == "FALSE") {
-    ptnl <- tnl.sim(n,m, l, trial)$cdf
+    ptnl <- tnl.sim(n, m, l, trial)$cdf
     method <- "Monte Carlo simulation"
   }
-  if (exact == "NULL" & n <= 10&m<=10) {
-    ptnl <- tnl(n,m, l)$cdf
+  if (exact == "NULL" & n <= 10 & m <= 10) {
+    ptnl <- tnl(n, m, l)$cdf
     method <- "exact"
   }
-  if (exact == "NULL" & n > 10|m>10) {
-    ptnl <- tnl.sim(n,m, l, trial)$cdf
+  if (exact == "NULL" & n > 10 | m > 10) {
+    ptnl <- tnl.sim(n, m, l, trial)$cdf
     method <- "Monte Carlo simulation"
   }
   cdfq <- NULL
@@ -254,10 +283,10 @@ ptnl <- function(q, n,m, l, exact = "NULL", trial = 100000) {
     if (q[i] < l) {
       cdfq[i] <- 0
     }
-    if (q[i] > min(n,m)) {
+    if (q[i] > min(n, m)) {
       cdfq[i] <- 1
     }
-    if (q[i] >= l & q[i] <= min(n,m)) {
+    if (q[i] >= l & q[i] <= min(n, m)) {
       cdfq[i] <- ptnl[q[i]]
     }
   }
@@ -291,34 +320,32 @@ ptnl <- function(q, n,m, l, exact = "NULL", trial = 100000) {
 #'    }
 #'
 #' @examples
-#' \dontrun{
-#' dtnl(k = c(1,3,6), n = 7,m=5, l = 2)
-#'   $method
-#'   [1] "exact"
-#'
-#'   $pmf
-#'   [1] 0.00000000 0.04671717 0.00000000
-#'   }
-dtnl <- function(k, n,m, l, exact = "NULL", trial = 100000) {
+#' #dtnl(k = c(1, 3, 6), n = 7, m = 5, l = 2)
+#' ## $method
+#' ## [1] "exact"
+#' ##
+#' ## $pmf
+#' ## [1] 0.00000000 0.04671717 0.00000000
+dtnl <- function(k, n, m, l, exact = "NULL", trial = 100000) {
   if (exact == "TRUE") {
-    dtnl <- tnl(n,m, l)$pmf
+    dtnl <- tnl(n, m, l)$pmf
     method <- "exact"
   }
   if (exact == "FALSE") {
-    dtnl <- tnl.sim(n,m, l, trial)$pmf
+    dtnl <- tnl.sim(n, m, l, trial)$pmf
     method <- "Monte Carlo simulation"
   }
-  if (exact == "NULL" & n <= 10&m<=10) {
-    dtnl <- tnl(n,m, l)$pmf
+  if (exact == "NULL" & n <= 10 & m <= 10) {
+    dtnl <- tnl(n, m, l)$pmf
     method <- "exact"
   }
-  if (exact == "NULL" & n > 10|m>10) {
-    dtnl <- tnl.sim(n,m, l, trial)$pmf
+  if (exact == "NULL" & n > 10 | m > 10) {
+    dtnl <- tnl.sim(n, m, l, trial)$pmf
     method <- "Monte Carlo simulation"
   }
   pmfk <- NULL
   for (i in 1:length(k)) {
-    if (k[i] < l | k[i] > min(n,m)) {
+    if (k[i] < l | k[i] > min(n, m)) {
       pmfk[i] <- 0
     } else {
       pmfk[i] <- dtnl[k[i]]
@@ -354,33 +381,30 @@ dtnl <- function(k, n,m, l, exact = "NULL", trial = 100000) {
 #'    }
 #'
 #' @examples
-#' \dontrun{
-#' qtnl(p = c(.3,.9), n = 4,m=5, l = 1)
-#' # $method
-#' # [1] "exact"
-#' #
-#' # $quantile
-#' # [1]  3 4
-#' }
-qtnl <- function(p, n,m, l, exact = "NULL", trial = 100000) {
-
+#' #qtnl(p = c(.3, .9), n = 4, m = 5, l = 1)
+#' ## $method
+#' ## [1] "exact"
+#' ##
+#' ## $quantile
+#' ## [1]  3 4
+qtnl <- function(p, n, m, l, exact = "NULL", trial = 100000) {
   if (any(p < 0) | any(p > 1)) {
     stop(paste("p must be between 0 and 1", "\n", ""))
   }
   if (exact == "TRUE") {
-    cdf <- tnl(n,m, l)$cdf
+    cdf <- tnl(n, m, l)$cdf
     method <- "exact"
   }
   if (exact == "FALSE") {
-    cdf <- tnl.sim(n,m, l, trial)$cdf
+    cdf <- tnl.sim(n, m, l, trial)$cdf
     method <- "Monte Carlo simulation"
   }
-  if (exact == "NULL" & n <= 10&m<=10) {
-    cdf <- tnl(n,m, l)$cdf
+  if (exact == "NULL" & n <= 10 & m <= 10) {
+    cdf <- tnl(n, m, l)$cdf
     method <- "exact"
   }
-  if (exact == "NULL" & n > 10|m>10) {
-    cdf <- tnl.sim(n,m, l, trial)$cdf
+  if (exact == "NULL" & n > 10 | m > 10) {
+    cdf <- tnl.sim(n, m, l, trial)$cdf
     method <- "Monte Carlo simulation"
   }
 
@@ -411,12 +435,10 @@ qtnl <- function(p, n,m, l, exact = "NULL", trial = 100000) {
 #'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 #' @return \code{\link{rtnl}} return *N* of the generated random values.
 #' @examples
-#' \dontrun{
-#' rtnl(N = 20, n = 7,m=10, l = 1)
-#'   [1] 7 6 7 4 6 6 6 5 5 6 6 3 2 4 3 7 7 7 7 6
-#'   }
-rtnl <- function(N,n,m, l) {
-  x<- y<- NULL
+#' #rtnl(N = 20, n = 7, m = 10, l = 1)
+#' ## [1] 7 6 7 4 6 6 6 5 5 6 6 3 2 4 3 7 7 7 7 6
+rtnl <- function(N, n, m, l) {
+  x <- y <- NULL
   statistic <- NULL
   for (i in 1:N) {
     x <- stats::rnorm(n)
@@ -438,25 +460,39 @@ rtnl <- function(N,n,m, l) {
 #' @return \code{\link{tnl_mean}} return the mean of
 #'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 #' @examples
-#' \dontrun{
-#' require(base)
-#' tnl_mean(n. = 11,m.=8, l = 1)
-#'   [1] 5.1693
-#'   }
-tnl_mean <- function(n.,m., l) {
-  if (any(c(n.,m.) < (2 * l + 1))) {
+#' #require(base)
+#' #tnl_mean(n. = 11, m. = 8, l = 1)
+#' ## [1] 5.1693
+tnl_mean <- function(n., m., l) {
+  if (any(c(n., m.) < (2 * l + 1))) {
     warning("n,m must be > 2l")
   }
-  if(n.==m.){m<-m.;n<-n.} else { m<-max(n.,m.);n<-min(n.,m.)}
-  j1=NULL ;  j1[1]=0;  for (i in 2:n)  {j1[i]=floor(m/n*(i-1))}
-  j2=NULL ;  for (i in 1:(n-1)) {j2[i]=ceiling(m/n*(i+1))} ;  j2[n]=(m+1)
+  if (n. == m.) {
+    m <- m.
+    n <- n.
+  } else {
+    m <- max(n., m.)
+    n <- min(n., m.)
+  }
+  j1 <- NULL
+  j1[1] <- 0
+  for (i in 2:n) {
+    j1[i] <- floor(m / n * (i - 1))
+  }
+  j2 <- NULL
+  for (i in 1:(n - 1)) {
+    j2[i] <- ceiling(m / n * (i + 1))
+  }
+  j2[n] <- (m + 1)
   pi <- NULL
   for (i in 1:n) {
-       p <- 0
-       for (k in j1[max(1,i-(l-1))]:(j2[min(n,i+(l-1))]-1)) {p <- p + a.ki(n,m, k, i)}
+    p <- 0
+    for (k in j1[max(1, i - (l - 1))]:(j2[min(n, i + (l - 1))] - 1)) {
+      p <- p + a.ki(n, m, k, i)
+    }
     pi[i] <- p
   }
- M=sum(pi)
+  M <- sum(pi)
   return(M)
 }
 
@@ -475,17 +511,29 @@ tnl_mean <- function(n.,m., l) {
 #' @return \code{\link{ptnl.lehmann}} return vector of the distribution under
 #' Lehmann alternatives against the specified gamma.
 #' @examples
-#'\dontrun{
-#' ptnl.lehmann(q = 3, n. = 5,m.=7, l = 2, gamma = 1.2)
-#'   [1] 0.07471397
-#'   }
-ptnl.lehmann <- function(q, n.,m., l, gamma) {
-  if (any(c(n.,m.) < (2 * l + 1))) {
+#' #ptnl.lehmann(q = 3, n. = 5, m. = 7, l = 2, gamma = 1.2)
+#' ## [1] 0.07471397
+ptnl.lehmann <- function(q, n., m., l, gamma) {
+  if (any(c(n., m.) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
   }
-  if(n.==m.){m<-m.;n<-n.} else { m<-max(n.,m.);n<-min(n.,m.)}
-  j1=NULL ;  j1[1]=0;  for (i in 2:n)  {j1[i]=floor(m/n*(i-1))}
-  j2=NULL ;  for (i in 1:(n-1)) {j2[i]=ceiling(m/n*(i+1))} ;  j2[n]=(m+1)
+  if (n. == m.) {
+    m <- m.
+    n <- n.
+  } else {
+    m <- max(n., m.)
+    n <- min(n., m.)
+  }
+  j1 <- NULL
+  j1[1] <- 0
+  for (i in 2:n) {
+    j1[i] <- floor(m / n * (i - 1))
+  }
+  j2 <- NULL
+  for (i in 1:(n - 1)) {
+    j2[i] <- ceiling(m / n * (i + 1))
+  }
+  j2[n] <- (m + 1)
 
   x <- NULL
   for (j in 0:n) {
@@ -501,24 +549,24 @@ ptnl.lehmann <- function(q, n.,m., l, gamma) {
       zz2 <- NULL
       M <- x[kk, ]
       for (i in 1:l) {
-        if (sum(M[1:(j2[i+(l-1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(M[1:(j2[i + (l - 1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(M[1:(j1[i-(l-1)])]) < i & sum(M[1:(j2[i+(l-1)])]) >= i) {
+        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i) {
           zz2[i] <- 1
         } else {
           zz2[i] <- 0
         }
       }
       for (i in (n - l + 1):n) {
-        if (sum(M[1:(j1[i-(l-1)])]) < i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(M[1:(j1[i - (l - 1)])]) < i) zz2[i] <- 1 else zz2[i] <- 0
       }
-      if (sum(zz2) == v){
+      if (sum(zz2) == v) {
         plam <- 1
         for (jj in 1:(m - 1)) {
           plam <- plam * gamma(sum(M[1:jj]) + jj * gamma) /
             gamma(sum(M[1:(jj + 1)])
-                  + jj * gamma + 1)
+            + jj * gamma + 1)
         }
         plam <- plam * gamma(sum(M) + m * gamma) / gamma(n + m * gamma + 1)
         const <- (factorial(m) * factorial(n) * (gamma^m)) / factorial(M[1])
@@ -563,17 +611,29 @@ ptnl.lehmann <- function(q, n.,m., l, gamma) {
 #' @return \code{\link{dtnl.lehmann}} return vector of the density under Lehmann
 #' alternatives against the specified gamma.
 #' @examples
-#' \dontrun{
-#' dtnl.lehmann(k = 3, n. = 6,m.=5 ,l = 2, gamma = 0.8)
-#'  [1] 0.07073467
-#'  }
-dtnl.lehmann <- function(k, n.,m., l, gamma) {
-  if (any(c(n.,m.) < (2 * l + 1))) {
+#' #dtnl.lehmann(k = 3, n. = 6, m. = 5, l = 2, gamma = 0.8)
+#' ## [1] 0.07073467
+dtnl.lehmann <- function(k, n., m., l, gamma) {
+  if (any(c(n., m.) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
   }
-  if(n.==m.){m<-m.;n<-n.} else { m<-max(n.,m.);n<-min(n.,m.)}
-  j1=NULL ;  j1[1]=0;  for (i in 2:n)  {j1[i]=floor(m/n*(i-1))}
-  j2=NULL ;  for (i in 1:(n-1)) {j2[i]=ceiling(m/n*(i+1))} ;  j2[n]=(m+1)
+  if (n. == m.) {
+    m <- m.
+    n <- n.
+  } else {
+    m <- max(n., m.)
+    n <- min(n., m.)
+  }
+  j1 <- NULL
+  j1[1] <- 0
+  for (i in 2:n) {
+    j1[i] <- floor(m / n * (i - 1))
+  }
+  j2 <- NULL
+  for (i in 1:(n - 1)) {
+    j2[i] <- ceiling(m / n * (i + 1))
+  }
+  j2[n] <- (m + 1)
 
   x <- NULL
   for (j in 0:n) {
@@ -589,24 +649,24 @@ dtnl.lehmann <- function(k, n.,m., l, gamma) {
       zz2 <- NULL
       M <- x[kk, ]
       for (i in 1:l) {
-        if (sum(M[1:(j2[i+(l-1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(M[1:(j2[i + (l - 1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(M[1:(j1[i-(l-1)])]) < i & sum(M[1:(j2[i+(l-1)])]) >= i) {
+        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i) {
           zz2[i] <- 1
         } else {
           zz2[i] <- 0
         }
       }
       for (i in (n - l + 1):n) {
-        if (sum(M[1:(j1[i-(l-1)])]) < i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(M[1:(j1[i - (l - 1)])]) < i) zz2[i] <- 1 else zz2[i] <- 0
       }
-      if (sum(zz2) == v){
+      if (sum(zz2) == v) {
         plam <- 1
         for (jj in 1:(m - 1)) {
           plam <- plam * gamma(sum(M[1:jj]) + jj * gamma) /
             gamma(sum(M[1:(jj + 1)])
-                  + jj * gamma + 1)
+            + jj * gamma + 1)
         }
         plam <- plam * gamma(sum(M) + m * gamma) / gamma(n + m * gamma + 1)
         const <- (factorial(m) * factorial(n) * (gamma^m)) / factorial(M[1])
@@ -647,20 +707,32 @@ dtnl.lehmann <- function(k, n.,m., l, gamma) {
 #' against the specified probabilities under Lehmann alternatives.
 #'
 #' @examples
-#' \dontrun{
-#' qtnl.lehmann(p = c(.1,.5,.9), n. = 7,m.=5, l = 1, gamma = 0.5)
-#'   [1] 1 3 5
-#'   }
-qtnl.lehmann <- function(p, n.,m., l, gamma) {
-  if (any(c(n.,m.) < (2 * l + 1))) {
+#' #qtnl.lehmann(p = c(.1, .5, .9), n. = 7, m. = 5, l = 1, gamma = 0.5)
+#' ## [1] 1 3 5
+qtnl.lehmann <- function(p, n., m., l, gamma) {
+  if (any(c(n., m.) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
   }
   if (any(p < 0) | any(p > 1)) {
     stop(paste("p must be between 0 and 1", "\n", ""))
   }
-  if(n.==m.){m<-m.;n<-n.} else { m<-max(n.,m.);n<-min(n.,m.)}
-  j1=NULL ;  j1[1]=0;  for (i in 2:n)  {j1[i]=floor(m/n*(i-1))}
-  j2=NULL ;  for (i in 1:(n-1)) {j2[i]=ceiling(m/n*(i+1))} ;  j2[n]=(m+1)
+  if (n. == m.) {
+    m <- m.
+    n <- n.
+  } else {
+    m <- max(n., m.)
+    n <- min(n., m.)
+  }
+  j1 <- NULL
+  j1[1] <- 0
+  for (i in 2:n) {
+    j1[i] <- floor(m / n * (i - 1))
+  }
+  j2 <- NULL
+  for (i in 1:(n - 1)) {
+    j2[i] <- ceiling(m / n * (i + 1))
+  }
+  j2[n] <- (m + 1)
 
   x <- NULL
   for (j in 0:n) {
@@ -676,24 +748,24 @@ qtnl.lehmann <- function(p, n.,m., l, gamma) {
       zz2 <- NULL
       M <- x[kk, ]
       for (i in 1:l) {
-        if (sum(M[1:(j2[i+(l-1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(M[1:(j2[i + (l - 1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(M[1:(j1[i-(l-1)])]) < i & sum(M[1:(j2[i+(l-1)])]) >= i) {
+        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i) {
           zz2[i] <- 1
         } else {
           zz2[i] <- 0
         }
       }
       for (i in (n - l + 1):n) {
-        if (sum(M[1:(j1[i-(l-1)])]) < i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(M[1:(j1[i - (l - 1)])]) < i) zz2[i] <- 1 else zz2[i] <- 0
       }
-      if (sum(zz2) == v){
+      if (sum(zz2) == v) {
         plam <- 1
         for (jj in 1:(m - 1)) {
           plam <- plam * gamma(sum(M[1:jj]) + jj * gamma) /
             gamma(sum(M[1:(jj + 1)])
-                  + jj * gamma + 1)
+            + jj * gamma + 1)
         }
         plam <- plam * gamma(sum(M) + m * gamma) / gamma(n + m * gamma + 1)
         const <- (factorial(m) * factorial(n) * (gamma^m)) / factorial(M[1])
@@ -737,15 +809,19 @@ qtnl.lehmann <- function(p, n.,m., l, gamma) {
 #' @return \code{\link{rtnl.lehmann}} return *N* of the generated random values
 #' under Lehmann alternatives.
 #' @examples
-#' \dontrun{
-#' rtnl.lehmann(N = 15, n = 7,m=7, l = 2, gamma = 0.5)
-#' [1] 4 4 7 5 3 7 7 4 4 5 5 7 7 3
-#' }
-rtnl.lehmann <- function(N, n.,m., l, gamma) {
-  if (any(c(n.,m.) < (2 * l + 1))) {
+#' # rtnl.lehmann(N = 15, n = 7,m=7, l = 2, gamma = 0.5)
+#' ## [1] 4 4 7 5 3 7 7 4 4 5 5 7 7 3
+rtnl.lehmann <- function(N, n., m., l, gamma) {
+  if (any(c(n., m.) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
   }
-  if(n.==m.){m<-m.;n<-n.} else { m<-max(n.,m.);n<-min(n.,m.)}
+  if (n. == m.) {
+    m <- m.
+    n <- n.
+  } else {
+    m <- max(n., m.)
+    n <- min(n., m.)
+  }
   x <- y <- NULL
   statistic <- NULL
   for (i in 1:N) {
@@ -755,4 +831,3 @@ rtnl.lehmann <- function(N, n.,m., l, gamma) {
   }
   return(statistic)
 }
-
