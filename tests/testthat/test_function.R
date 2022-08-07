@@ -64,8 +64,10 @@ test_that("functions returns a list with the specified length", {
 # ## Test whether the output is a vector with the expected size
 test_that("functions returns a  vector with the expected size", {
   expect_vector(rtnl(10, 5, 10, 2), ptype = double(), size = 10)
-  expect_vector(dtnl.lehmann(c(2, -1, 8), 6, 9, 2, 0.8), ptype = double(), size = 3)
-  expect_vector(ptnl.lehmann(c(2, -1, 6), 5, 9, 2, 1.2), ptype = double(), size = 3)
+  expect_vector(
+    dtnl.lehmann(c(2, -1, 8), 6, 9, 2, 0.8), ptype = double(), size = 3)
+  expect_vector(
+    ptnl.lehmann(c(2, -1, 6), 5, 9, 2, 1.2), ptype = double(), size = 3)
   expect_vector(rtnl.lehmann(10, 7, 7, 2, 1), ptype = double(), size = 10)
   expect_vector(rtnl.lehmann(10, 7, 9, 2, 1), ptype = double(), size = 10)
 })

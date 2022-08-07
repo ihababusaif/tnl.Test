@@ -37,7 +37,8 @@ tnl <- function(n., m., l) {
         if (sum(M[1:(j2[i + (l - 1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i) {
+        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i)
+          {
           zz2[i] <- 1
         } else {
           zz2[i] <- 0
@@ -111,7 +112,7 @@ tnl.sim <- function(n., m., l, trial = 100000) {
   statistict <- (plyr::count(statistic) / trial)$freq
   statistict <- c(rep(0, (l - 1)), statistict)
   res <- NULL
-  for (t in 1:length(statistict)) {
+  for (t in seq_along(statistic)) {
     res[t] <- sum(statistict[1:t])
   }
   result <- list(method = "Monte Carlo simulation", pmf = statistict, cdf = res)
@@ -279,7 +280,7 @@ ptnl <- function(q, n, m, l, exact = "NULL", trial = 100000) {
     method <- "Monte Carlo simulation"
   }
   cdfq <- NULL
-  for (i in 1:length(q)) {
+  for (i in seq_along(q)) {
     if (q[i] < l) {
       cdfq[i] <- 0
     }
@@ -344,7 +345,7 @@ dtnl <- function(k, n, m, l, exact = "NULL", trial = 100000) {
     method <- "Monte Carlo simulation"
   }
   pmfk <- NULL
-  for (i in 1:length(k)) {
+  for (i in seq_along(k)) {
     if (k[i] < l | k[i] > min(n, m)) {
       pmfk[i] <- 0
     } else {
@@ -409,8 +410,8 @@ qtnl <- function(p, n, m, l, exact = "NULL", trial = 100000) {
   }
 
   q <- NULL
-  for (j in 1:length(p)) {
-    for (i in 1:length(cdf)) {
+  for (j in seq_along(p)) {
+    for (i in seq_along(cdf)) {
       if (cdf[i] > p[j]) {
         break
       }
@@ -455,8 +456,9 @@ rtnl <- function(N, n, m, l) {
 #'   \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @param n.,m. samples size.
 #' @description \code{\link{tnl_mean}}  gives an expression for
-#' \ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}{\eqn{E(T_n^{(\ell)})}}
-#'  under \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}.
+#' \ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}
+#' {\eqn{E(T_n^{(\ell)})}} under \ifelse{html}{\out{H<sub>0</sub>:F=G}}
+#' {\eqn{H_0:F=G}}.
 #' @return \code{\link{tnl_mean}} return the mean of
 #'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 #' @examples
@@ -552,7 +554,8 @@ ptnl.lehmann <- function(q, n., m., l, gamma) {
         if (sum(M[1:(j2[i + (l - 1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i) {
+        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i)
+          {
           zz2[i] <- 1
         } else {
           zz2[i] <- 0
@@ -576,12 +579,12 @@ ptnl.lehmann <- function(q, n., m., l, gamma) {
     }
     lehmann[v] <- count
     res <- NULL
-    for (t in 1:length(lehmann)) {
+    for (t in seq_along(lehmann)) {
       res[t] <- sum(lehmann[1:t])
     }
   }
   ptnllehq <- NULL
-  for (i in 1:length(q)) {
+  for (i in seq_along(q)) {
     if (q[i] < 1) {
       ptnllehq[i] <- 0
     }
@@ -652,7 +655,8 @@ dtnl.lehmann <- function(k, n., m., l, gamma) {
         if (sum(M[1:(j2[i + (l - 1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i) {
+        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i)
+          {
           zz2[i] <- 1
         } else {
           zz2[i] <- 0
@@ -678,7 +682,7 @@ dtnl.lehmann <- function(k, n., m., l, gamma) {
   }
 
   dtnllehk <- NULL
-  for (i in 1:length(k)) {
+  for (i in seq_along(k)) {
     if (k[i] < 1 | k[i] > n) {
       dtnllehk[i] <- 0
     }
@@ -751,7 +755,8 @@ qtnl.lehmann <- function(p, n., m., l, gamma) {
         if (sum(M[1:(j2[i + (l - 1)])]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i) {
+        if (sum(M[1:(j1[i - (l - 1)])]) < i & sum(M[1:(j2[i + (l - 1)])]) >= i)
+          {
           zz2[i] <- 1
         } else {
           zz2[i] <- 0
@@ -780,7 +785,7 @@ qtnl.lehmann <- function(p, n., m., l, gamma) {
     }
   }
   q <- NULL
-  for (j in 1:length(p)) {
+  for (j in seq_along(p)) {
     for (i in 1:n) {
       if (res[i] > p[j]) {
         break

@@ -47,8 +47,8 @@ Random number generator of ${T_n^{(\ell)}}$ test statistic are provided under nu
 ```{r}
 library(tnl.Test)
 require(stats)
- x=rnorm(7,2,0.5)
- y=rnorm(7,0,1)
+ x<-rnorm(7,2,0.5)
+ y<-rnorm(7,0,1)
  tnl.test(x,y,l=2)
 ```
 
