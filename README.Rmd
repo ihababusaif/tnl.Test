@@ -58,7 +58,7 @@ require(stats)
 ```ptnl``` gives the distribution function of ${T_n^{(\ell)}}$ against the specified quantiles.
 ```{r}
 library(tnl.Test)
- ptnl(q=2,n=6,m=11,l=2,exact="NULL")
+ ptnl(q=2,n=6,m=9,l=2,exact="NULL")
 ```
 
 ```dtnl``` gives the density of ${T_n^{(\ell)}}$ against the specified quantiles.
@@ -70,7 +70,7 @@ library(tnl.Test)
 ```qtnl``` gives the quantile function of ${T_n^{(\ell)}}$ against the specified probabilities.
 ```{r}
 library(tnl.Test)
- qtnl(p=.3,n=8,m=5,l=1,exact="FALSE",trial = 100000)
+ qtnl(p=c(.1,.3,.5,.8,1),n=8,m=8,l=1,exact="NULL",trial = 100000)
 ```
 
 ```rtnl``` generates random values from ${T_n^{(\ell)}}$.

@@ -97,7 +97,7 @@ probabilities.}
 
 \code{\link{rtnl}} return \emph{N} of the generated random values.
 
-\code{\link{tnl_mean}} return the mean of
+\code{\link[=tnl_mean]{tnl_mean()}} return the mean of
 \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 
 \code{\link{ptnl.lehmann}} return vector of the distribution under
@@ -131,9 +131,9 @@ against the specified probabilities.
 \code{\link{rtnl}} generates random values from
 \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 
-\code{\link{tnl_mean}}  gives an expression for
-\ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}{\eqn{E(T_n^{(\ell)})}}
-under \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}.
+\code{\link[=tnl_mean]{tnl_mean()}} gives an expression for
+\ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}{\eqn{E(T_n^{(\ell)}
+)}}under \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}.
 
 \code{\link{ptnl.lehmann}}  gives the  distribution function of
 \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}

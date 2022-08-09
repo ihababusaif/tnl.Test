@@ -112,7 +112,7 @@ tnl.sim <- function(n., m., l, trial = 100000) {
   statistict <- (plyr::count(statistic) / trial)$freq
   statistict <- c(rep(0, (l - 1)), statistict)
   res <- NULL
-  for (t in seq_along(statistic)) {
+  for (t in seq_along(statistict)) {
     res[t] <- sum(statistict[1:t])
   }
   result <- list(method = "Monte Carlo simulation", pmf = statistict, cdf = res)
@@ -422,7 +422,6 @@ qtnl <- function(p, n, m, l, exact = "NULL", trial = 100000) {
   return(result)
 }
 
-
 #' Random generation for the
 #' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @export
@@ -455,11 +454,10 @@ rtnl <- function(N, n, m, l) {
 #' @param l class parameter of
 #'   \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @param n.,m. samples size.
-#' @description \code{\link{tnl_mean}}  gives an expression for
-#' \ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}
-#' {\eqn{E(T_n^{(\ell)})}} under \ifelse{html}{\out{H<sub>0</sub>:F=G}}
-#' {\eqn{H_0:F=G}}.
-#' @return \code{\link{tnl_mean}} return the mean of
+#' @description [tnl_mean()] gives an expression for
+#' \ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}{\eqn{E(T_n^{(\ell)}
+#' )}}under \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}.
+#' @return [tnl_mean()] return the mean of
 #'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 #' @examples
 #' #require(base)
