@@ -9,6 +9,7 @@
 coverage](https://codecov.io/gh/ihababusaif/tnl.Test/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ihababusaif/tnl.Test?branch=master)
 [![R-CMD-check](https://github.com/ihababusaif/tnl.Test/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ihababusaif/tnl.Test/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tnl.Test)](https://cran.r-project.org/package=tnl.Test)
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 <!-- badges: end -->
 
 The goal of tnl.Test is to provide functions to perform the hypothesis
@@ -118,7 +119,7 @@ library(tnl.Test)
 ``` r
 library(tnl.Test)
  rtnl(N=15,n=7,m=10,l=2)
-#>  [1] 4 7 7 5 7 5 5 6 5 6 7 6 6 3 3
+#>  [1] 7 7 7 7 7 6 6 4 2 7 6 7 7 7 6
 ```
 
 `tnl_mean` gives an expression for $E({T_n^{(\ell)}})$ under
@@ -164,13 +165,15 @@ Lehmann alternatives.
 ``` r
 library(tnl.Test)
 rtnl.lehmann(N = 15, n. = 7,m.=10, l = 2,gamma=0.5)
-#>  [1] 5 5 7 6 4 4 3 7 4 6 7 5 6 6 7
+#>  [1] 7 4 7 7 4 6 2 7 5 6 7 7 6 6 7
 ```
 
 ## Corresponding Author
 
 Department of Statistics, Faculty of Science, Selcuk University, 42250,
-Konya, Turkey <br /> Email:<coskun@selcuk.edu.tr>
+Konya, Turkey <br />
+
+Email:<censtat@gmail.com>
 
 ## References
 
