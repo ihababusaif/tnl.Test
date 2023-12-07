@@ -119,7 +119,7 @@ library(tnl.Test)
 ``` r
 library(tnl.Test)
  rtnl(N=15,n=7,m=10,l=2)
-#>  [1] 7 7 7 7 7 6 6 4 2 7 6 7 7 7 6
+#>  [1] 7 7 7 6 6 7 7 7 7 7 5 7 6 7 7
 ```
 
 `tnl_mean` gives an expression for $E({T_n^{(\ell)}})$ under
@@ -165,7 +165,7 @@ Lehmann alternatives.
 ``` r
 library(tnl.Test)
 rtnl.lehmann(N = 15, n. = 7,m.=10, l = 2,gamma=0.5)
-#>  [1] 7 4 7 7 4 6 2 7 5 6 7 7 6 6 7
+#>  [1] 7 7 6 7 7 7 7 7 7 7 3 7 7 4 7
 ```
 
 ## Corresponding Author
@@ -177,7 +177,12 @@ Email:<censtat@gmail.com>
 
 ## References
 
-Karakaya K. et al. (2021). *A Class of Non-parametric Tests for the
-Two-Sample Problem based on Order Statistics and Power Comparisons*.
-Submitted paper.<br /> Aliev F. et al. (2021). *A Nonparametric Test for
-the Two-Sample Problem based on Order Statistics*. Submitted paper.
+Karakaya, K., Sert, S., Abusaif, I., Kuş, C., Ng, H. K. T., & Nagaraja,
+H. N. (2023). *A Class of Non-parametric Tests for the Two-Sample
+Problem based on Order Statistics and Power Comparisons*. Submitted
+paper.<br />
+
+Aliev, F., Özbek, L., Kaya, M. F., Kuş, C., Ng, H. K. T., & Nagaraja, H.
+N. (2022). *A nonparametric test for the two-sample problem based on
+order statistics.* Communications in Statistics-Theory and Methods,
+1-25.
