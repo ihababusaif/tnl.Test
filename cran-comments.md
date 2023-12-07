@@ -42,4 +42,38 @@ Found the following files/directories:
 Found the following files/directories:
   'lastMiKTeXException'
   
-  I encountered this even though I installed the latest version of the "tidy" file. Despite these notes, my package works without any problems.
+  
+## R CMD check results (second)  
+Build ID:	tnl.Test_0.1.0.tar.gz-5c63f1dcbfe64386a38245dd926e6cc2
+Platform:	Fedora Linux, R-devel, clang, gfortran
+Submitted:	24 minutes 8.1 seconds ago
+Build time:	24 minutes 2.3 seconds
+NOTES:
+* checking CRAN incoming feasibility ... [7s/22s] NOTE
+Maintainer: ‘Ihab Abusaif <censtat@gmail.com>’
+
+New submission
+* checking HTML version of manual ... NOTE
+Skipping checking HTML validation: no command 'tidy' found
+Skipping checking math rendering: package 'V8' unavailable
+
+
+
+
+## R CMD check results (third)   
+Build ID:	tnl.Test_0.1.0.tar.gz-1a6e4547f1b341d4b561ba8fb248485b
+Platform:	Ubuntu Linux 20.04.1 LTS, R-release, GCC
+Submitted:	24 minutes 30 seconds ago
+Build time:	24 minutes 26.7 seconds
+NOTES:
+* checking CRAN incoming feasibility ... [6s/16s] NOTE
+Maintainer: ‘Ihab Abusaif <censtat@gmail.com>’
+
+New submission
+* checking HTML version of manual ... NOTE
+Skipping checking HTML validation: no command 'tidy' found
+Skipping checking math rendering: package 'V8' unavailable
+
+
+
+I encountered this even though I installed the latest version of the "tidy" file. Despite these notes, my package works without any problems.
