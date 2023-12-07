@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/ihababusaif/tnl.Test/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ihababusaif/tnl.Test?branch=master)
 [![R-CMD-check](https://github.com/ihababusaif/tnl.Test/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ihababusaif/tnl.Test/actions/workflows/R-CMD-check.yaml)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tnl.Test)](https://cran.r-project.org/package=tnl.Test)
 <!-- badges: end -->
 
 The goal of tnl.Test is to provide functions to perform the hypothesis tests for the two sample problem based on order statistics and power comparisons.
