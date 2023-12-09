@@ -3,12 +3,14 @@ Package: tnl.Test
 Title: Non-Parametric Tests for the Two-Sample Problem
 Version: 0.1.0
 Authors@R: c(
-    person("Ihab", "Abusaif", , "censtat@gmail.com", role = c("cre", "aut")),
-    person("Sümeyra", "Sert", , "sumeyra.sert@selcuk.edu.tr", role = c("aut", "ctb")),
-    person("Coşkun", "Kuş", , "coskun@selcuk.edu.tr", role = c("aut", "ctb"),
-           comment = "https://www.selcuk.edu.tr/Personel/coskun"),
-    person("Kadir", "Karakaya", , "kkarakaya@selcuk.edu.tr", role = c("aut", "ctb"),
-           comment = c(ORCID = "0000-0002-0781-3587")),
+    person("Ihab", "Abusaif", , "censtat@gmail.com", role = c("cre", "aut"),
+           comment = "https://www.researchgate.net/profile/Ihab-Abusaif"),
+    person("Sümeyra", "Sert", , "sumeyra.sert@selcuk.edu.tr", role = c("aut"),
+           comment = "https://www.researchgate.net/profile/Suemeyra-Sert"),
+    person("Coşkun", "Kuş", , "coskun@selcuk.edu.tr", role = c("aut"),
+           comment = "https://www.researchgate.net/profile/Coskun-Kus"),
+    person("Kadir", "Karakaya", , "kkarakaya@selcuk.edu.tr", role = c("aut"),
+           comment = "https://www.researchgate.net/profile/Kadir-Karakaya-2"),
     person("Hon Keung Tony", "Ng", role = "aut"),
     person("Haikady N.", "Nagaraja", role = "aut")
   )

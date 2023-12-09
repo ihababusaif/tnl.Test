@@ -132,64 +132,55 @@ a.ki <- function(n, m, k, i) {
 #' @rdname tnl.test
 #' @param x the first (non-empty) numeric vector of data values.
 #' @param y the second (non-empty) numeric vector of data values.
-#' @param l class parameter of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
+#' @param l class parameter of \eqn{T_n^{(\ell)}}.
 #' @param exact the method that will be used.
 #' "NULL" or a logical indicating whether an exact should be computed.
 #' See 'Details' for the meaning of NULL.
 #' @description  \code{\link{tnl.test}} performs a nonparametric test for
 #'            two sample test on vectors of data.
-#' @return \code{\link{tnl.test}} returns a list with the following
-#'            components
+#' @return \code{\link{tnl.test}} returns a list with the following components
 #'    \describe{
 #'      \item{\code{statistic:}}{the value of the test statistic.}
-#'      \item{\code{p.value:}}{the p-value of the test.}
-#'    }
-#'
+#'      \item{\code{p.value:}}{the p-value of the test.}}
 #' @details A non-parametric two-sample test is performed for testing null
-#'    hypothesis
-#'    \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}
-#'    against the alternative
-#'       hypothesis
-#'       \ifelse{html}{\out{H<sub>1</sub>:F &#8800 G}}{\eqn{H_1:F\not= G}}.
-#'        The assumptions
-#'          of the
-#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'      test are that both
-#'          samples should come from a continuous distribution and the samples
-#'          should have the same sample size.\cr
-#'      Missing values are silently omitted from x and y.\cr
-#'      Exact and simulated p-values are available for the
-#'   \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'       test.
-#'      If exact ="NULL" (the default) the p-value is computed based
-#'      on exact distribution when the sample size is less than 11.
-#'      Otherwise, p-value is computed based on a Monte Carlo simulation.
-#'      If exact ="TRUE", an exact p-value is computed. If exact="FALSE"
-#'      , a Monte Carlo simulation is performed to compute the p-value.
-#'      It is recommended to calculate the p-value by a Monte Carlo simulation
-#'      (use exact="FALSE"), as it takes too long to calculate the exact
-#'      p-value when the sample size is greater than 10. \cr
-#'      The probability mass function (pmf), cumulative density function (cdf)
-#'       and quantile function of
-#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'     are also available in this package, and the above-mentioned conditions
-#'        about exact ="NULL", exact ="TRUE" and exact="FALSE" is also valid
-#'        for these functions.\cr
-#'      Exact distribution of
-#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'       test is also computed under Lehman alternative.\cr
-#'      Random number generator of
-#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'       test statistic are provided under null hypothesis in the library.
-#' @references Karakaya K. et al. (2021).
-#' *A Class of Non-parametric Tests for the Two-Sample Problem*
-#' *based on Order Statistics and Power Comparisons*
-#' . Submitted paper.\cr
-#'             Aliev F. et al. (2021).
-#'             *A Nonparametric Test for the*
-#'             *Two-Sample Problem based on Order Statistics*.
-#'             Submitted paper.
+#'  hypothesis \eqn{H_0:F=G} against the alternative
+#'  hypothesis \eqn{H_1:F\not= G}.
+#'  The assumptions of the \eqn{T_n^{(\ell)}} test are that both
+#'  samples should come from a continuous distribution and the samples
+#'  should have the same sample size.
+#'
+#'  Missing values are silently omitted from \eqn{x} and \eqn{y}.
+#'
+#'  Exact and simulated p-values are available for the \eqn{T_n^{(\ell)}} test.
+#'  If exact ="NULL" (the default) the p-value is computed based
+#'  on exact distribution when the sample size is less than 11.
+#'  Otherwise, p-value is computed based on a Monte Carlo simulation.
+#'  If exact ="TRUE", an exact p-value is computed. If exact="FALSE"
+#'  , a Monte Carlo simulation is performed to compute the p-value.
+#'  It is recommended to calculate the p-value by a Monte Carlo simulation
+#'  (use exact="FALSE"), as it takes too long to calculate the exact
+#'  p-value when the sample size is greater than 10.
+#'
+#'  The probability mass function (pmf), cumulative density function (cdf)
+#'  and quantile function of \eqn{T_n^{(\ell)}}
+#'  are also available in this package, and the above-mentioned conditions
+#'  about exact ="NULL", exact ="TRUE" and exact="FALSE" is also valid
+#'  for these functions.
+#'
+#'  Exact distribution of \eqn{T_n^{(\ell)}}
+#'  test is also computed under Lehman alternative.
+#'
+#'  Random number generator of \eqn{T_n^{(\ell)}}
+#'  test statistic are provided under null hypothesis in the library.
+#' @references Karakaya, K., Sert, S., Abusaif, I., Kuş, C., Ng, H. K. T.,
+#'  & Nagaraja, H. N. (2023).
+#'  A Class of Non-parametric Tests for the Two-Sample Problem based on
+#'  Order Statistics and Power Comparisons. Submitted paper.
+#'
+#' Aliev, F., Özbek, L., Kaya, M. F., Kuş, C., Ng, H. K. T.,
+#' & Nagaraja, H. N. (2022). A nonparametric test for the two-sample problem
+#'  based on order statistics.
+#'  Communications in Statistics-Theory and Methods, 1-25.
 #' @examples
 #' #require(stats)
 #' #x <- rnorm(7, 2, 0.5)
@@ -230,31 +221,25 @@ we exclude the missing values from the data"
 }
 
 
-#' Distribution function of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#' against the specified quantiles
+#' Distribution function of \eqn{T_n^{(\ell)}} against the specified quantiles
 #' @export
 #' @rdname tnl.test
 #' @param k,q vector of quantiles.
 #' @param n,m samples size.
-#' @param l class parameter of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' @param l class parameter of \eqn{T_n^{(\ell)}}
 #' @param exact the method that will be used. "NULL" or a logical indicating
 #'         whether an exact should be computed.
 #'         See 'Details' for the meaning of NULL.
 #' @param trial number of trials for simulation.
 #' @description  \code{\link{ptnl}} gives the distribution function of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'  against the specified quantiles.
+#' \eqn{T_n^{(\ell)}} against the specified quantiles.
 #' @return \code{\link{ptnl}} returns a list with the following components
 #'    \describe{
 #'      \item{\code{method}:}{The method that was used (exact or simulation).
 #'                  See 'Details'.}
-#'      \item{\code{cdf}:}{distribution function of
-#'  \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'                    against the specified quantiles.}
+#'      \item{\code{cdf}:}{distribution function of \eqn{T_n^{(\ell)}}
+#'                  against the specified quantiles.}
 #'    }
-#'
 #' @examples
 #' #ptnl(q = c(2, 5), n = 6, m = 5, l = 2, trial = 100000)
 #' ## $method
@@ -295,31 +280,25 @@ ptnl <- function(q, n, m, l, exact = "NULL", trial = 100000) {
   return(result)
 }
 
-#' Density of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#' against the specified quantiles
+#' Density of \eqn{T_n^{(\ell)}} against the specified quantiles
 #' @export
 #' @rdname tnl.test
 #' @param k,q vector of quantiles.
 #' @param n,m samples size.
-#' @param l class parameter of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' @param l class parameter of \eqn{T_n^{(\ell)}}
 #' @param trial number of trials for simulation.
 #' @param exact the method that will be used.
 #' "NULL" or a logical indicating whether
 #' an exact should be computed. See 'Details' for the meaning of NULL.
-#' @description  \code{\link{dtnl}} gives the density of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' @description  \code{\link{dtnl}} gives the density of \eqn{T_n^{(\ell)}}
 #' against the specified quantiles.
 #' @return \code{\link{dtnl}} returns a list with the following components
 #'    \describe{
 #'      \item{\code{method}:}{The method that was used (exact or simulation).
 #'      See 'Details'.}
-#'      \item{\code{pmf}:}{density of
-#'  \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'      \item{\code{pmf}:}{density of \eqn{T_n^{(\ell)}}
 #'       against the specified quantiles.}
 #'    }
-#'
 #' @examples
 #' #dtnl(k = c(1, 3, 6), n = 7, m = 5, l = 2)
 #' ## $method
@@ -356,23 +335,18 @@ dtnl <- function(k, n, m, l, exact = "NULL", trial = 100000) {
   return(result)
 }
 
-
-
-#' quantile function of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' Quantile function of \eqn{T_n^{(\ell)}}
 #' @export
 #' @rdname tnl.test
 #' @param p vector of probabilities.
 #' @param n,m samples size.
-#' @param l class parameter of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
+#' @param l class parameter of \eqn{T_n^{(\ell)}}.
 #' @param exact the method that will be used. "NULL" or a logical
 #' indicating whether an exact should be computed.
 #' See 'Details' for the meaning of NULL.
 #' @param trial number of trials for simulation.
 #' @description  \code{\link{qtnl}} gives the quantile function of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'  against the specified probabilities.
+#' \eqn{T_n^{(\ell)}} against the specified probabilities.
 #' @return \code{\link{qtnl}} returns a list with the following components
 #'    \describe{
 #'      \item{\code{method}:}{The method that was used (exact or simulation).
@@ -380,7 +354,6 @@ dtnl <- function(k, n, m, l, exact = "NULL", trial = 100000) {
 #'      \item{\code{quantile}:}{quantile function against the specified
 #'                                probabilities.}
 #'    }
-#'
 #' @examples
 #' #qtnl(p = c(.3, .9), n = 4, m = 5, l = 1)
 #' ## $method
@@ -422,17 +395,15 @@ qtnl <- function(p, n, m, l, exact = "NULL", trial = 100000) {
   return(result)
 }
 
-#' Random generation for the
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' Random generation for the \eqn{T_n^{(\ell)}}
 #' @export
 #' @rdname tnl.test
 #' @param N number of observations. If length(N) > 1, the length is taken
 #'               to be the number required.
 #' @param n,m samples size.
-#' @param l class parameter of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' @param l class parameter of \eqn{T_n^{(\ell)}}
 #' @description \code{\link{rtnl}} generates random values from
-#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
+#'      \eqn{T_n^{(\ell)}}.
 #' @return \code{\link{rtnl}} return *N* of the generated random values.
 #' @examples
 #' #rtnl(N = 20, n = 7, m = 10, l = 1)
@@ -451,14 +422,11 @@ rtnl <- function(N, n, m, l) {
 #' Function that calculates moments
 #' @export
 #' @rdname tnl.test
-#' @param l class parameter of
-#'   \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' @param l class parameter of \eqn{T_n^{(\ell)}}
 #' @param n.,m. samples size.
 #' @description [tnl_mean()] gives an expression for
-#' \ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}{\eqn{E(T_n^{(\ell)}
-#' )}}under \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}.
-#' @return [tnl_mean()] return the mean of
-#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
+#' \eqn{E(T_n^{(\ell)})} under \eqn{H_0:F=G}.
+#' @return [tnl_mean()] return the mean of \eqn{T_n^{(\ell)}}.
 #' @examples
 #' #require(base)
 #' #tnl_mean(n. = 11, m. = 8, l = 1)
@@ -496,18 +464,14 @@ tnl_mean <- function(n., m., l) {
   return(M)
 }
 
-#' The distribution function of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'            under Lehmann alternatives.
+#' The distribution function of\eqn{T_n^{(\ell)}} under Lehmann alternatives.
 #' @export
 #' @rdname tnl.test
-#' @param l class parameter of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' @param l class parameter of \eqn{T_n^{(\ell)}}
 #' @param n.,m. samples size.
 #' @param gamma parameter of Lehmann alternative
 #' @description \code{\link{ptnl.lehmann}}  gives the  distribution function of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'  under Lehmann alternatives.
+#' \eqn{T_n^{(\ell)}} under Lehmann alternatives.
 #' @return \code{\link{ptnl.lehmann}} return vector of the distribution under
 #' Lehmann alternatives against the specified gamma.
 #' @examples
@@ -597,18 +561,14 @@ ptnl.lehmann <- function(q, n., m., l, gamma) {
 }
 
 
-#' The density of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'    under Lehmann alternatives.
+#' The density of \eqn{T_n^{(\ell)}} under Lehmann alternatives.
 #' @export
 #' @rdname tnl.test
-#' @param l class parameter of
-#'   \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' @param l class parameter of \eqn{T_n^{(\ell)}}
 #' @param n.,m. samples size.
 #' @param gamma parameter of Lehmann alternative
 #' @description \code{\link{dtnl.lehmann}}  gives the density of
-#'  \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'   under Lehmann alternatives.
+#' \eqn{T_n^{(\ell)}} under Lehmann alternatives.
 #' @return \code{\link{dtnl.lehmann}} return vector of the density under Lehmann
 #' alternatives against the specified gamma.
 #' @examples
@@ -692,19 +652,16 @@ dtnl.lehmann <- function(k, n., m., l, gamma) {
 }
 
 
-#' quantile function of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'  under Lehmann alternatives.
+#' quantile function of \eqn{T_n^{(\ell)}} under Lehmann alternatives.
 #' @export
 #' @rdname tnl.test
 #' @param p vector of probabilities.
 #' @param n.,m. samples size.
-#' @param l class parameter of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
+#' @param l class parameter of \eqn{T_n^{(\ell)}}.
 #' @param gamma parameter of Lehmann alternative.
 #' @description  \code{\link{qtnl.lehmann}} gives the quantile function of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'  against the specified probabilities under Lehmann alternatives.
+#' \eqn{T_n^{(\ell)}} against the specified probabilities under
+#' Lehmann alternatives.
 #' @return \code{\link{qtnl.lehmann}} returns a quantile function
 #' against the specified probabilities under Lehmann alternatives.
 #'
@@ -795,20 +752,16 @@ qtnl.lehmann <- function(p, n., m., l, gamma) {
 }
 
 
-#' Random generation for the
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#' under Lehmann alternatives.
+#' Random generation for the \eqn{T_n^{(\ell)}} under Lehmann alternatives.
 #' @export
 #' @rdname tnl.test
 #' @param N number of observations. If length(N) > 1, the length is taken
 #'               to be the number required.
 #' @param n.,m. samples size.
-#' @param l class parameter of
-#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
+#' @param l class parameter of \eqn{T_n^{(\ell)}}.
 #' @param gamma parameter of Lehmann alternative.
 #' @description \code{\link{rtnl.lehmann}} generates random values from
-#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-#'    under Lehmann alternatives.
+#'    \eqn{T_n^{(\ell)}} under Lehmann alternatives.
 #' @return \code{\link{rtnl.lehmann}} return *N* of the generated random values
 #' under Lehmann alternatives.
 #' @examples
