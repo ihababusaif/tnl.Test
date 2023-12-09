@@ -117,7 +117,7 @@ rtnl.lehmann(N = 15, n. = 7,m.=10, l = 2,gamma=0.5)
 
 ## Corresponding Author
 Department of Statistics, Faculty of Science, Selcuk University, 42250, Konya, Turkey  <br />
-
+www.researchgate.net/profile/Ihab-Abusaif  <br />
 Email:censtat@gmail.com
 
 

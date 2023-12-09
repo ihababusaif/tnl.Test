@@ -119,7 +119,7 @@ library(tnl.Test)
 ``` r
 library(tnl.Test)
  rtnl(N=15,n=7,m=10,l=2)
-#>  [1] 7 7 7 6 6 7 7 7 7 7 5 7 6 7 7
+#>  [1] 7 7 6 7 5 4 7 7 7 5 7 7 7 7 5
 ```
 
 `tnl_mean` gives an expression for $E({T_n^{(\ell)}})$ under
@@ -165,14 +165,13 @@ Lehmann alternatives.
 ``` r
 library(tnl.Test)
 rtnl.lehmann(N = 15, n. = 7,m.=10, l = 2,gamma=0.5)
-#>  [1] 7 7 6 7 7 7 7 7 7 7 3 7 7 4 7
+#>  [1] 5 6 2 5 7 7 5 7 7 3 7 2 3 2 7
 ```
 
 ## Corresponding Author
 
 Department of Statistics, Faculty of Science, Selcuk University, 42250,
-Konya, Turkey <br />
-
+Konya, Turkey <br /> www.researchgate.net/profile/Ihab-Abusaif <br />
 Email:<censtat@gmail.com>
 
 ## References
