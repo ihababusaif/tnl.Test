@@ -7,10 +7,10 @@
 
 ## R CMD check results
 ❯ On windows-x86_64-devel (r-devel)
-  checking CRAN incoming feasibility ... [12s] NOTE
-  Maintainer: 'Ihab Abusaif <censtat@gmail.com>'
+  checking CRAN incoming feasibility ... [11s] NOTE
   
   New submission
+  Maintainer: 'Ihab Abusaif <censtat@gmail.com>'
 
 ❯ On windows-x86_64-devel (r-devel), ubuntu-gcc-release (r-release), fedora-clang-devel (r-devel)
   checking HTML version of manual ... NOTE
@@ -27,20 +27,13 @@
     'lastMiKTeXException'
 
 ❯ On ubuntu-gcc-release (r-release)
-  checking CRAN incoming feasibility ... [6s/16s] NOTE
+  checking CRAN incoming feasibility ... [6s/17s] NOTE
   Maintainer: ‘Ihab Abusaif <censtat@gmail.com>’
   
   New submission
-  
-  Found the following (possibly) invalid URLs:
-    URL: https://www.researchgate.net/profile/Ihab-Abusaif
-      From: inst/doc/tnl_Test.html
-            README.md
-      Status: 403
-      Message: Forbidden
 
 ❯ On fedora-clang-devel (r-devel)
-  checking CRAN incoming feasibility ... [7s/17s] NOTE
+  checking CRAN incoming feasibility ... [7s/20s] NOTE
   Maintainer: ‘Ihab Abusaif <censtat@gmail.com>’
   
   New submission
