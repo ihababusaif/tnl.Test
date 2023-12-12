@@ -14,12 +14,10 @@ Authors@R: c(
     person("Hon Keung Tony", "Ng", role = "aut"),
     person("Haikady N.", "Nagaraja", role = "aut")
   )
-Description: R functions to perform the hypothesis tests for the two
-    sample problem based on order statistics and power comparisons.  This
-    package contains functions to calculate the test statistic, density,
-    distribution function, quantile function, random number generation and
-    others. density, distribution function, quantile function, random
-    number generation and others.
+Description: Performing the hypothesis tests for the two
+    sample problem based on order statistics and power comparisons. 
+    Calculate the test statistic, density, distribution function, 
+    quantile function, random number generation and others.
 License: GPL-3
 URL: https://github.com/ihababusaif/tnl.Test
 BugReports: https://github.com/ihababusaif/tnl.Test/issues

@@ -171,46 +171,20 @@ Random number generator of \eqn{T_n^{(\ell)}}
 test statistic are provided under null hypothesis in the library.
 }
 \examples{
-#require(stats)
-#x <- rnorm(7, 2, 0.5)
-#y <- rnorm(5, 0, 1)
-#tnl.test(x, y, l = 2)
-## $statistic
-## [1] 2
-##
-## $p.value
-## [1]  0.01515152
-#ptnl(q = c(2, 5), n = 6, m = 5, l = 2, trial = 100000)
-## $method
-## [1] "exact"
-##
-## $cdf
-## [1] 0.02164502 1.00000000
-#dtnl(k = c(1, 3, 6), n = 7, m = 5, l = 2)
-## $method
-## [1] "exact"
-##
-## $pmf
-## [1] 0.00000000 0.04671717 0.00000000
-#qtnl(p = c(.3, .9), n = 4, m = 5, l = 1)
-## $method
-## [1] "exact"
-##
-## $quantile
-## [1]  3 4
-#rtnl(N = 20, n = 7, m = 10, l = 1)
-## [1] 7 6 7 4 6 6 6 5 5 6 6 3 2 4 3 7 7 7 7 6
-#require(base)
-#tnl_mean(n. = 11, m. = 8, l = 1)
-## [1] 5.1693
-#ptnl.lehmann(q = 3, n. = 5, m. = 7, l = 2, gamma = 1.2)
-## [1] 0.07471397
-#dtnl.lehmann(k = 3, n. = 6, m. = 5, l = 2, gamma = 0.8)
-## [1] 0.07073467
-#qtnl.lehmann(p = c(.1, .5, .9), n. = 7, m. = 5, l = 1, gamma = 0.5)
-## [1] 1 3 5
-# rtnl.lehmann(N = 15, n = 7,m=7, l = 2, gamma = 0.5)
-## [1] 4 4 7 5 3 7 7 4 4 5 5 7 7 3
+require(stats)
+x <- rnorm(7, 2, 0.5)
+y <- rnorm(5, 0, 1)
+tnl.test(x, y, l = 2)
+ptnl(q = c(2, 5), n = 6, m = 5, l = 2, trial = 100000)
+dtnl(k = c(1, 3, 6), n = 7, m = 5, l = 2)
+qtnl(p = c(.3, .9), n = 4, m = 5, l = 1)
+rtnl(N = 20, n = 7, m = 10, l = 1)
+require(base)
+tnl_mean(n. = 11, m. = 8, l = 1)
+ptnl.lehmann(q = 3, n. = 5, m. = 7, l = 2, gamma = 1.2)
+dtnl.lehmann(k = 3, n. = 6, m. = 5, l = 2, gamma = 0.8)
+qtnl.lehmann(p = c(.1, .5, .9), n. = 7, m. = 5, l = 1, gamma = 0.5)
+rtnl.lehmann(N = 15, n = 7,m=7, l = 2, gamma = 0.5)
 }
 \references{
 Karakaya, K., Sert, S., Abusaif, I., Kuş, C., Ng, H. K. T.,

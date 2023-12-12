@@ -182,15 +182,10 @@ a.ki <- function(n, m, k, i) {
 #'  based on order statistics.
 #'  Communications in Statistics-Theory and Methods, 1-25.
 #' @examples
-#' #require(stats)
-#' #x <- rnorm(7, 2, 0.5)
-#' #y <- rnorm(5, 0, 1)
-#' #tnl.test(x, y, l = 2)
-#' ## $statistic
-#' ## [1] 2
-#' ##
-#' ## $p.value
-#' ## [1]  0.01515152
+#' require(stats)
+#' x <- rnorm(7, 2, 0.5)
+#' y <- rnorm(5, 0, 1)
+#' tnl.test(x, y, l = 2)
 tnl.test <- function(x, y, l, exact = "NULL") {
   if (any(is.na(x)) | any(is.na(y))) {
     warning(
@@ -241,12 +236,7 @@ we exclude the missing values from the data"
 #'                  against the specified quantiles.}
 #'    }
 #' @examples
-#' #ptnl(q = c(2, 5), n = 6, m = 5, l = 2, trial = 100000)
-#' ## $method
-#' ## [1] "exact"
-#' ##
-#' ## $cdf
-#' ## [1] 0.02164502 1.00000000
+#' ptnl(q = c(2, 5), n = 6, m = 5, l = 2, trial = 100000)
 ptnl <- function(q, n, m, l, exact = "NULL", trial = 100000) {
   if (exact == "TRUE") {
     ptnl <- tnl(n, m, l)$cdf
@@ -300,12 +290,7 @@ ptnl <- function(q, n, m, l, exact = "NULL", trial = 100000) {
 #'       against the specified quantiles.}
 #'    }
 #' @examples
-#' #dtnl(k = c(1, 3, 6), n = 7, m = 5, l = 2)
-#' ## $method
-#' ## [1] "exact"
-#' ##
-#' ## $pmf
-#' ## [1] 0.00000000 0.04671717 0.00000000
+#' dtnl(k = c(1, 3, 6), n = 7, m = 5, l = 2)
 dtnl <- function(k, n, m, l, exact = "NULL", trial = 100000) {
   if (exact == "TRUE") {
     dtnl <- tnl(n, m, l)$pmf
@@ -355,12 +340,7 @@ dtnl <- function(k, n, m, l, exact = "NULL", trial = 100000) {
 #'                                probabilities.}
 #'    }
 #' @examples
-#' #qtnl(p = c(.3, .9), n = 4, m = 5, l = 1)
-#' ## $method
-#' ## [1] "exact"
-#' ##
-#' ## $quantile
-#' ## [1]  3 4
+#' qtnl(p = c(.3, .9), n = 4, m = 5, l = 1)
 qtnl <- function(p, n, m, l, exact = "NULL", trial = 100000) {
   if (any(p < 0) | any(p > 1)) {
     stop(paste("p must be between 0 and 1", "\n", ""))
@@ -406,8 +386,7 @@ qtnl <- function(p, n, m, l, exact = "NULL", trial = 100000) {
 #'      \eqn{T_n^{(\ell)}}.
 #' @return \code{\link{rtnl}} return *N* of the generated random values.
 #' @examples
-#' #rtnl(N = 20, n = 7, m = 10, l = 1)
-#' ## [1] 7 6 7 4 6 6 6 5 5 6 6 3 2 4 3 7 7 7 7 6
+#' rtnl(N = 20, n = 7, m = 10, l = 1)
 rtnl <- function(N, n, m, l) {
   x <- y <- NULL
   statistic <- NULL
@@ -428,9 +407,8 @@ rtnl <- function(N, n, m, l) {
 #' \eqn{E(T_n^{(\ell)})} under \eqn{H_0:F=G}.
 #' @return [tnl_mean()] return the mean of \eqn{T_n^{(\ell)}}.
 #' @examples
-#' #require(base)
-#' #tnl_mean(n. = 11, m. = 8, l = 1)
-#' ## [1] 5.1693
+#' require(base)
+#' tnl_mean(n. = 11, m. = 8, l = 1)
 tnl_mean <- function(n., m., l) {
   if (any(c(n., m.) < (2 * l + 1))) {
     warning("n,m must be > 2l")
@@ -475,8 +453,7 @@ tnl_mean <- function(n., m., l) {
 #' @return \code{\link{ptnl.lehmann}} return vector of the distribution under
 #' Lehmann alternatives against the specified gamma.
 #' @examples
-#' #ptnl.lehmann(q = 3, n. = 5, m. = 7, l = 2, gamma = 1.2)
-#' ## [1] 0.07471397
+#' ptnl.lehmann(q = 3, n. = 5, m. = 7, l = 2, gamma = 1.2)
 ptnl.lehmann <- function(q, n., m., l, gamma) {
   if (any(c(n., m.) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
@@ -572,8 +549,7 @@ ptnl.lehmann <- function(q, n., m., l, gamma) {
 #' @return \code{\link{dtnl.lehmann}} return vector of the density under Lehmann
 #' alternatives against the specified gamma.
 #' @examples
-#' #dtnl.lehmann(k = 3, n. = 6, m. = 5, l = 2, gamma = 0.8)
-#' ## [1] 0.07073467
+#' dtnl.lehmann(k = 3, n. = 6, m. = 5, l = 2, gamma = 0.8)
 dtnl.lehmann <- function(k, n., m., l, gamma) {
   if (any(c(n., m.) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
@@ -666,8 +642,7 @@ dtnl.lehmann <- function(k, n., m., l, gamma) {
 #' against the specified probabilities under Lehmann alternatives.
 #'
 #' @examples
-#' #qtnl.lehmann(p = c(.1, .5, .9), n. = 7, m. = 5, l = 1, gamma = 0.5)
-#' ## [1] 1 3 5
+#' qtnl.lehmann(p = c(.1, .5, .9), n. = 7, m. = 5, l = 1, gamma = 0.5)
 qtnl.lehmann <- function(p, n., m., l, gamma) {
   if (any(c(n., m.) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
@@ -765,8 +740,7 @@ qtnl.lehmann <- function(p, n., m., l, gamma) {
 #' @return \code{\link{rtnl.lehmann}} return *N* of the generated random values
 #' under Lehmann alternatives.
 #' @examples
-#' # rtnl.lehmann(N = 15, n = 7,m=7, l = 2, gamma = 0.5)
-#' ## [1] 4 4 7 5 3 7 7 4 4 5 5 7 7 3
+#' rtnl.lehmann(N = 15, n = 7,m=7, l = 2, gamma = 0.5)
 rtnl.lehmann <- function(N, n., m., l, gamma) {
   if (any(c(n., m.) < (2 * l + 1))) {
     stop(paste("n,m must be > 2l", "\n", ""))
